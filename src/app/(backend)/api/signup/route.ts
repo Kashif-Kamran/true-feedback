@@ -3,6 +3,7 @@ import dbConnect from "@/lib/connect.mongo";
 import UserModel from "@/models/user.model";
 import ApiResponse from "@/types/ApiResponse";
 import Encryptor from "@/lib/encryption";
+
 export async function POST(request: NextRequest) {
   await dbConnect();
   try {
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest) {
       username,
       email,
       password: hashedPassword,
-      isVerified: true, // TODO: Implement Email verification and set it false
+      isVerified: true, // TODO: Part of email based verification
     });
 
     return ApiResponse.success({
